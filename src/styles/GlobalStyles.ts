@@ -23,7 +23,7 @@ export default createGlobalStyle`
     --primary: #3E82FC;
     --secondary: #FE2C54;
     --highlight: #26F7FD;
-    --background: #152935;
+    --background: #00C3CA;
     --black: #000000;
     --black-50: #1E1E21;
     --label: rgba(0, 0, 0, 0.5);
