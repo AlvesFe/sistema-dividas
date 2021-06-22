@@ -16,10 +16,6 @@ export function DebitProvider({ children, ...rest }: DebitProviderProps) {
   const [activeStringId, setActiveStringId] = useState("");
   const [hasUpdated, setHasUpdated] = useState(true);
 
-  useEffect(() => {
-    activeId && console.log(activeId);
-  }, [activeId])
-
   const newDebit = () => {
     setActiveId(0);
     toggleCreating(true);

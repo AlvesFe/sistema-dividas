@@ -35,10 +35,6 @@ export default function Form({ type }: FormProps) {
     getPropertiesSelect();
   })
 
-  useEffect(() => {
-    console.log("Debit: ",debit)
-  },[debit])
-
   const toggleEditable = (res: boolean) => {
     res ? setIsEditable(true) : setIsEditable(false);
   }
