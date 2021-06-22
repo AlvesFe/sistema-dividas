@@ -1,10 +1,12 @@
-import { Button, PlusIcon } from "./styles"
+import { AddButtonProps } from "libs/ButtonRepository";
+import { Button, PlusIcon } from "./styles";
 
-export default function AddButton() {
+
+export default function AddButton({ onClick, title }:AddButtonProps) {
   return (
-    <Button>
+    <Button onClick={onClick} >
       <PlusIcon />
-      <div>Adicionar dívida</div>
+      <div>{title}</div>
     </Button>
   )
 }

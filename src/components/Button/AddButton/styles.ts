@@ -29,7 +29,7 @@ export const Button = styled.div`
 
   &:hover{
     box-shadow: 0.1px 5px 5px rgba(0,0,0,0.25);
-    width: 12rem;
+    width: 10rem;
     >div:last-child{
       display: initial;
    }
