@@ -12,7 +12,26 @@ App de gerenciamento de dívidas usando APIs REST.
 ```bash
 yarn
 ```
-⋅⋅⋅Ou: 
+...Ou: 
 ```bash
 npm install
+```
+## Utilização
+
+* Para iniciar o projeto em modo de desenvolvimento execute o comando num terminal aberto na pasta raís do projeto:
+```bash
+yarn start
+```
+...Ou:
+```bash
+npm run start
+```
+
+* Para construir o projeto e prepara-lo para deploy execute o comando num terminal aberto na pasta raís do projeto:
+```bash
+yarn build
+```
+...Ou:
+```bash
+npm run build
 ```
