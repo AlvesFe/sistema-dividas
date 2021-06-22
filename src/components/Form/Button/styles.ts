@@ -19,11 +19,16 @@ export const FormButton = styled.div<FormButtonStyleProps>`
   -moz-user-select: none;
   cursor: pointer;
 
-  &:hover{
-    box-shadow: 0.5px 2px 5px rgba(0,0,0,0.25);
+  ${props => !props.disabled && 
+    `
+      &:hover{
+        box-shadow: 0.5px 2px 5px rgba(0,0,0,0.25);
+      }
+      &:active{
+        background-color: var(--label);
+      }
+    `
   }
-  &:active{
-    background-color: var(--label);
-  }
-
+  
+  ${ props => props.disabled && "background-color: rgba(0,0,0,0.25); cursor: default"}
 `;
