@@ -48,7 +48,7 @@ export default function Home() {
           <DebitDetails className="panels">
 
             <Header>
-              <Title size="x-large" color="var(--black)">Detalhes da dívida</Title>
+              <Title size="x-large" color="var(--black)">{isCreating? "Criar nova dívida" : "Detalhes da dívida"}</Title>
               <LineSpacer />
             </Header>
 
