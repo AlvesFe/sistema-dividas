@@ -1,5 +1,6 @@
 # Gerenciador de Dívidas
 App de gerenciamento de dívidas usando APIs REST.
+Criado usando React em typescript.
 
 ## Pré-requisitos
 * Node (v12 ou maior) com npm ou Yarn (Preferencialmente Yarn)
