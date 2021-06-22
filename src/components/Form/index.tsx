@@ -9,7 +9,7 @@ import { FormProps } from 'libs/FormRepository';
 import { DebitProps } from 'libs/DebitRepository';
 
 export default function Form({type}: FormProps) {
-  const { data , activeId } = useContext(DebitContext);
+  const { data , activeId, createDebit } = useContext(DebitContext);
   const [isEditable, setIsEditable] = useState(false);
   const [debit, setDebit] = useState({} as DebitProps);
 
@@ -27,12 +27,14 @@ export default function Form({type}: FormProps) {
   }
 
   const changeInputValue = (e: ChangeEvent<HTMLInputElement>) => { 
-    let newData = {...data[activeId-1], value: parseFloat(e.target.value)};
+    let newData = type === "edit" ? 
+      {...data[activeId-1], value: parseFloat(e.target.value)} : {...debit, value: parseFloat(e.target.value)};
     setDebit(newData);
   }
 
   const changeDescriptionValue = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    let newData = {...data[activeId-1], description: e.target.value};
+    let newData = type === "edit" ?
+      {...data[activeId-1], description: e.target.value} : {...debit, description: e.target.value}
     setDebit(newData);
   }
 
@@ -41,6 +43,19 @@ export default function Form({type}: FormProps) {
     const name = e.target[parseInt(e.target.value)].innerHTML;    
     let newDebit = {...debit, id: parseInt(e.target.value), name};
     setDebit(newDebit);
+  }
+
+  const handleCreateDebit = () => {
+    const keys = ["id","name", "description", "value"];
+    let itFailed = false;
+    
+    for(const key of keys){
+      if(!debit.hasOwnProperty(key)){
+        itFailed = true;
+      }
+    }
+
+    !itFailed && createDebit(debit);
   }
 
   return (
@@ -87,8 +102,9 @@ export default function Form({type}: FormProps) {
           <Button
             title="Criar dívida"
             titleColor="var(--white)"
-            onClick={addButtonAction}
+            onClick={isEditable ? handleCreateDebit : () => null}
             color="var(--primary)"
+            disabled={!isEditable}
           />
         </SectionButtons>
       )}
