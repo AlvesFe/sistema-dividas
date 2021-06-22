@@ -18,7 +18,7 @@ import { useContext } from 'react';
 import { DebitContext } from 'context/DebitContext';
 
 export default function Home() {
-  const { data, isCreating, newDebit } = useContext(DebitContext);
+  const { isCreating, newDebit } = useContext(DebitContext);
 
   return (
     <PageContainer>
@@ -39,9 +39,7 @@ export default function Home() {
             </Header>
 
             <Section>
-              <List 
-                data={data} 
-              />
+              <List/>
             </Section>
           </DebitList>
 

@@ -31,23 +31,28 @@ export const PageContainer = styled.div`
   display: flex;
   height: 100%;
   flex-direction: column;
-  align-items: center;
-  padding: 2rem;
+  padding-top: 3rem;
   color: var(--white);
 
   width: min(1560px, 100%);
   margin: 0 auto;
+
+  @media(max-width: 1028px){
+    padding: 0 0 10px 0;
+  }
 `;
 
 export const Container = styled.div`
   display: flex;
   flex: 1;
   height: 100%;
-  
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
   >.panels{
     max-height: 80%;
     height: 80%;
-    margin: 1rem;
     border-radius: 5px;
     padding: 1rem;
     background-color: var(--white);
@@ -55,7 +60,7 @@ export const Container = styled.div`
     min-height: 300px;
 
     @media(max-width: 1028px){
-      width: 100%;
+      width: 90%;
     }
   }
 
