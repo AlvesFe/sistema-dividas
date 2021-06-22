@@ -1,5 +1,6 @@
-import { DebitContextData, DebitProviderProps } from 'libs/DebitRepository';
+import { DebitContextData, DebitProps, DebitProviderProps } from 'libs/DebitRepository';
 import { useState, useEffect, createContext } from 'react';
+import CreateDebit from 'services/DebiAPI/CreateDebit';
 import GetUsers from 'services/JSONPlaceHolder/GetUsers';
 
 export const DebitContext = createContext({} as DebitContextData);
@@ -50,6 +51,11 @@ export function DebitProvider({children, ...rest} : DebitProviderProps) {
     toggleCreating(true);
   }
 
+  const createDebit = async(debitInfo: DebitProps) => {
+    const request = await CreateDebit(debitInfo);
+    console.log(request);
+  }
+
   const changeActiveId = (id:number) => {
     setActiveId(id);
     setIsCreating(false);
@@ -73,7 +79,8 @@ export function DebitProvider({children, ...rest} : DebitProviderProps) {
         toggleCreating,
         newDebit,
         data,
-        getUser
+        getUser,
+        createDebit
       }}>
         {children}
     </DebitContext.Provider>
