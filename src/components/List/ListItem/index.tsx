@@ -1,4 +1,6 @@
+import { DebitContext } from "context/DebitContext";
 import { ItemProps } from "libs/ListRepository";
+import { useContext } from "react";
 import { ItemContainer, ItemName, ItemDate, ItemValue } from "./styles";
 
 interface ListItemProps {
@@ -6,8 +8,14 @@ interface ListItemProps {
 }
 
 export default function ListItem({ data }: ListItemProps) {
+  const { changeActiveId } = useContext(DebitContext);
+
+  const handleClick = (id: number)=>{
+    changeActiveId(id);
+  } 
+
   return (
-    <ItemContainer>
+    <ItemContainer onClick={() => handleClick(data.id)} >
       <div>
         <ItemName>
           {data.name}
