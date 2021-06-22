@@ -1,40 +1,64 @@
-import { PageContainer, Container, DebitList, DebitDetails, Title, LineSpacer } from './styles';
+import {
+  PageContainer,
+  Container,
+  DebitList,
+  DebitDetails,
+  Title,
+  LineSpacer,
+  Header,
+  Section,
+  Application
+} from './styles';
+
+import Form from 'components/Form';
+
 import { AddButton } from 'components/Button';
-import { Select, Input, TextArea, Button } from 'components/FormItem';
 import List from 'components/List';
+import { useContext } from 'react';
+import { DebitContext } from 'context/DebitContext';
 
 export default function Home() {
+  const { data, isCreating, newDebit } = useContext(DebitContext);
+
   return (
     <PageContainer>
-      <Title size="xx-large" isSpaced>Gerenciamento de Dívidas</Title>
-      <AddButton />
-      <div>
+      <AddButton 
+        onClick={newDebit} 
+        title="Nova dívida"
+      />
+
+      <Application>
+        <Title size="xx-large" spaced>Gerenciamento de Dívidas</Title>
+
         <Container>
           <DebitList className="panels">
-            <Title size="x-large" color="var(--black)">Usuários</Title>
-            <LineSpacer />
-            <List />
+
+            <Header>
+              <Title size="x-large" color="var(--black)">Usuários</Title>
+              <LineSpacer />
+            </Header>
+
+            <Section>
+              <List 
+                data={data} 
+              />
+            </Section>
           </DebitList>
+
           <DebitDetails className="panels">
-            <Title size="x-large" color="var(--black)">Detalhes da dívida</Title>
-            <LineSpacer />
-            <div>
-              <span>
-                <Select />
-                <div>
-                  <Input placeholder="Testando" type="number" />
-                  <Input placeholder="Testando" type="number" />
-                </div>
-                <TextArea placeholder="Testando tb" />
-              </span>
-              <span>
-                <Button />
-                <Button />
-              </span>
-            </div>
+
+            <Header>
+              <Title size="x-large" color="var(--black)">Detalhes da dívida</Title>
+              <LineSpacer />
+            </Header>
+
+            <Section centered>
+              <Form type={isCreating? "create" : "edit"}/>
+            </Section>
           </DebitDetails>
+
         </Container>
-      </div>
+      </Application>
     </PageContainer>
   )
 }
