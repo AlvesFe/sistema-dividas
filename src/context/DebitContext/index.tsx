@@ -1,6 +1,6 @@
 import Alert from 'components/Alert';
 import { DebitContextData, DebitProps, DebitProviderProps } from 'libs/DebitRepository';
-import { useState, useEffect, createContext } from 'react';
+import { useState, createContext } from 'react';
 import CreateDebit from 'services/DebitAPI/CreateDebit';
 import DeleteDebit from 'services/DebitAPI/DeleteDebit';
 import GetAllDebits from 'services/DebitAPI/GetAllDebits';
