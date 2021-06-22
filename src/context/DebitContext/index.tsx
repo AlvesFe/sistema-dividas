@@ -25,30 +25,6 @@ export function DebitProvider({ children, ...rest }: DebitProviderProps) {
     toggleCreating(true);
   }
 
-  const createDebit = async (debitInfo: DebitProps) => {
-
-    const itFailed = validateFields(debitInfo);
-
-    const request = await CreateDebit(debitInfo);
-
-    if (!itFailed && request.status === 200) {
-      Alert({
-        type: "success",
-        title: "Sucesso!",
-        text: "Sucesso ao criar dívida!"
-      })
-      toggleHasUpdated(true);
-    }
-    else {
-      Alert({
-        type: "error",
-        title: "Erro",
-        text: "Erro ao criar dívida!"
-      });
-    }
-
-  }
-
   const validateFields = (debitInfo: DebitProps) => {
     let itFailed = false;
     if (debitInfo.idUsuario === 0) itFailed = true;
@@ -84,6 +60,27 @@ export function DebitProvider({ children, ...rest }: DebitProviderProps) {
     return await GetUsers();
   }
 
+  const createDebit = async (debitInfo: DebitProps) => {
+
+    const itFailed = validateFields(debitInfo);
+
+    const request = await CreateDebit(debitInfo);
+
+    if (!itFailed && request.status === 200) {
+      Alert({
+        type: "success",
+        text: "Sucesso ao criar dívida!"
+      })
+      toggleHasUpdated(true);
+    }
+    else {
+      Alert({
+        type: "error",
+        text: "Erro ao criar dívida!"
+      });
+    }
+  }
+
   const updateDebit = async (debitInfo: DebitProps, id: string) => {
     const itFailed = validateFields(debitInfo);
 
@@ -92,7 +89,6 @@ export function DebitProvider({ children, ...rest }: DebitProviderProps) {
     if (!itFailed && request.status === 200) {
       Alert({
         type: "success",
-        title: "Sucesso!",
         text: "Sucesso ao atualizar dívida!"
       })
       toggleHasUpdated(true);
@@ -100,7 +96,6 @@ export function DebitProvider({ children, ...rest }: DebitProviderProps) {
     else {
       Alert({
         type: "error",
-        title: "Erro",
         text: "Erro ao atualizar dívida!"
       });
     }
@@ -112,7 +107,6 @@ export function DebitProvider({ children, ...rest }: DebitProviderProps) {
     if (request.ok === 1) {
       Alert({
         type: "success",
-        title: "Sucesso!",
         text: "Sucesso ao remover dívida!"
       })
       toggleHasUpdated(true);
@@ -120,7 +114,6 @@ export function DebitProvider({ children, ...rest }: DebitProviderProps) {
     else {
       Alert({
         type: "error",
-        title: "Erro",
         text: "Erro ao remover dívida!"
       });
     }
