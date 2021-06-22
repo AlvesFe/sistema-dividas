@@ -3,6 +3,7 @@ export interface ItemProps {
   name: string;
   date: string;
   value: number;
+  description: string;
 }
 
 export interface ListProps {
