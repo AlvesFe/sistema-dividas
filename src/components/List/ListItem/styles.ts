@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const ItemContainer = styled.div`
   display: flex;
   padding: 1rem;
-  min-width: 20rem;
   border-radius: 5px;
   background-color: var(--white-50);
   flex-direction: row;
